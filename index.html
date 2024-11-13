@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api</title>
+    <style>
+        .mm{
+           
+            justify-content: center;
+            justify-items: center;
+            justify-self: center;
+        }
+        #joke{
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            background-color: rgb(21, 235, 235);
+            color:rgb(56, 39, 39);
+            font-weight: 600;
+            font-size: large;
+            font-style: oblique;
+
+        }
+        #btn{
+            color: rgb(247, 39, 11);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mm">
+    <p id="joke"></p>
+    <button id="btn">search</button>
+</div>
+<script>
+ const jk=document.getElementById("joke")
+const btn=document.getElementById("btn")
+const url= "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single"
+var getjoke=()=>{
+    fetch(url)
+    .then(data => data.json())
+    .then(item=> {
+        jk.textContent=`${item.joke}`;
+    })
+}
+btn.addEventListener("click",getjoke)
+getjoke();
+
+</script>
+
+</body>
+</html>
